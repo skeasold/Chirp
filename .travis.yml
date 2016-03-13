@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+- 2.3.0
+addons:
+  postgresql: '9.4'
+before_script:
+- psql -c 'create database travis_ci_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
+deploy:
+  provider: heroku
+  api_key:
+    secure: WPfNmhdTa1CZ6RqOh7Bmce3mWM31AvxiGAyCfCPqWLsC38/qc9jqLGOq72XcwF8ChW8cdOFaQeUmgdIGGGvFbpSYMn0bE9hZbiECEJbhISX5ZfOj7LnwEgn67MzfRlRKAhzoGuYsEp0nPW9nRopWUqZXzew89zsJpHXMldEtD1b06vBzWXkXu+B5VMJcc1z5Ze1JhS1WvegMtxx5VMsGuo7ilo8d9kmRF1U0alc3SC8xVvfIE4xzuaOKedlnSPkBAZiInAIUhej+JFQ+UyujrqRnZcsUN8sLMBK0aiq0gy4rAO6F04Y26YsorRseKYQx/YNiBpGprSrkmpi6+51DLfQB9xREtY6q0rP19vewYPWLBvjHpkw9ymz3TBd9Z8nTcNyj5sh+2rqNZArGNwDJOaFdHbT5XY/fXe3nM25JnZRovCepcYUw2OFjF6Ajffcldz7xfXhO8TNw1MeYNmXBCEj7t4t5MiKYVeeXDrFiVSt2X3A1xmyCjysg9HZhzSeUfWzjKNzWC7Op/Ii/YZBsq2mAjWUeZCrdjfg2z6uIVpRwbGYJAt8cWNaBuEIkMQsN6ErY80pgPq5jz5NirDpTc84Gx+FO4iarpGmngEprc54r27O+C8EEu9NDAAltPIvQABs76HcpHdPrwWRcOHVPHasLhKYdmhPUYyxaEFCC6b0=
+  app: sking-chirp
+  on:
+    repo: skylarking/Chirp
