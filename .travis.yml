@@ -13,3 +13,5 @@ deploy:
   app: sking-chirp
   on:
     repo: skylarking/Chirp
+  run:
+    - "rake db:migrate"
